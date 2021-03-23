@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public GameObject canvas;
     public GameObject events;
 
+    public GameObject Player;
+
 
     private void Awake()
     {
@@ -145,4 +147,5 @@ public class GameManager : MonoBehaviour
         enableStartUI();
 
     }
+
 }
