@@ -25,7 +25,7 @@ public class NearFire : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        Debug.Log("Enter");
         GameObject player = collision.gameObject;
         if (collision.collider.GetType() == typeof(BoxCollider))
         {
@@ -33,11 +33,13 @@ public class NearFire : MonoBehaviour
             {
                 byFire = true;
             }
+            Debug.Log("Enter");
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
+        Debug.Log("Exit");
         GameObject player = collision.gameObject;
         if (collision.collider.GetType() == typeof(BoxCollider))
         {
@@ -45,12 +47,17 @@ public class NearFire : MonoBehaviour
             {
                 byFire = false;
             }
+            Debug.Log("Exit");
         }
     }
 
     IEnumerator LowerCold(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+<<<<<<< Updated upstream
         coldbar.SetCold(+1);
+=======
+        coldbar.SetCold(-1);
+>>>>>>> Stashed changes
     }
 }
