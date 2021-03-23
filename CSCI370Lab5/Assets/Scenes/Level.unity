@@ -1317,6 +1317,7 @@ MonoBehaviour:
   minCold: 0
   currentCold: 0
   coldBar: {fileID: 1532280960}
+  isCold: 0
 --- !u!1001 &490270035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3480,7 +3481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 359.9, y: 234.1}
+  m_AnchoredPosition: {x: 842.7, y: 471.6}
   m_SizeDelta: {x: 212, y: 23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532280960
