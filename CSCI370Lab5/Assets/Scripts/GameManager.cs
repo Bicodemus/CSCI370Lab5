@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
   
 
     public GameObject backgroundCanvas;
+    public GameObject backgroundImage;
+    public GameObject backgroundImageC;
     public GameObject canvas;
     public GameObject events;
 
@@ -71,7 +73,27 @@ public class GameManager : MonoBehaviour
         backgroundCanvas.SetActive(true);
 
     }
-    IEnumerator LoadYourAsyncScene(string scene)
+
+    IEnumerator ColorLerp(Color endValue, float duration)
+    {
+        float time = 0;
+        Image sprite = backgroundImage.GetComponent<Image>();
+        Image sprite2 = backgroundImageC.GetComponent<Image>();
+        Color startValue = sprite.color;
+        Color startValue2 = sprite2.color;
+
+        while (time < duration)
+        {
+            sprite.color = Color.Lerp(startValue, endValue, time / duration);
+            sprite2.color = Color.Lerp(startValue2, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        sprite.color = endValue;
+        sprite2.color = endValue;
+    }
+
+    IEnumerator LoadYourAsyncScene(bool lerp, string scene)
     {
 
         Debug.Log("Loading " + scene);
@@ -87,13 +109,13 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
-
+        if (lerp) { StartCoroutine(ColorLerp(new Color(0, 0, 0, 0), 2)); }
+        else StartCoroutine(ColorLerp(new Color(1, 1, 1, 1), 2)); // reverse
     }
     public void StartButton()
     {
         disableStartUI();
-        backgroundCanvas.SetActive(false);
-        StartCoroutine(LoadYourAsyncScene("Level"));
+        StartCoroutine(LoadYourAsyncScene(true, "Level"));
 
 
     }
