@@ -9,11 +9,17 @@ public class Player : MonoBehaviour
     public HealthBar healthbar;
     public GameObject deathEffect;
 
+    public int minCold = 0;
+    public int currentCold;
+    public ColdBar coldBar;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
+        currentCold = minCold;
+        coldBar.SetMinCold(minCold);
 
     }
 
@@ -31,10 +37,14 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
 
         healthbar.SetHealth(currentHealth);
+        coldBar.SetCold(currentCold);
 
         if (currentHealth <= 0)
         {
             Die();
+        }else if(currentCold == 100)
+        {
+            TakeDamage(10);
         }
     }
 

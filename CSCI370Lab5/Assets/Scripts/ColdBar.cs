@@ -9,7 +9,7 @@ public class ColdBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
-    public void SetMaxHealth(int cold)
+    public void SetMinCold(int cold)
     {
         slider.maxValue = cold;
         slider.value = cold;
@@ -17,7 +17,7 @@ public class ColdBar : MonoBehaviour
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetHealth(int cold)
+    public void SetCold(int cold)
     {
         slider.value = cold;
 
