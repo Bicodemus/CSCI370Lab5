@@ -54,10 +54,7 @@ public class NearFire : MonoBehaviour
     IEnumerator LowerCold(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-<<<<<<< Updated upstream
         coldbar.SetCold(+1);
-=======
         coldbar.SetCold(-1);
->>>>>>> Stashed changes
     }
 }
