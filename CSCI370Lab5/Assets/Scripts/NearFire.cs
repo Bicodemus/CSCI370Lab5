@@ -9,13 +9,11 @@ public class NearFire : MonoBehaviour
     public float waitTime = 3f;
     public ColdBar coldbar;
 
-    private SphereCollider sphere;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("TEST");
-        sphere = gameObject.GetComponent<SphereCollider>();
-
+        
     }
 
     // Update is called once per frame
@@ -29,9 +27,14 @@ public class NearFire : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Yes");
+            Debug.Log("enter");
         }
     }
 
