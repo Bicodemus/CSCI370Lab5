@@ -55,4 +55,13 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
 
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Fire"))
+        {
+            Debug.Log("work");
+        }
+    }
+
 }
