@@ -17,7 +17,7 @@ public class ColdBar : MonoBehaviour
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetCold(int cold)
+    public void SetCold(float cold)
     {
         slider.value = cold;
 

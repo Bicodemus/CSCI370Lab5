@@ -5,52 +5,42 @@ using UnityEngine;
 public class NearFire : MonoBehaviour
 {
 
-    private bool byFire = false;
-    public float waitTime = 3f;
     public ColdBar coldbar;
+    [Range(1, 2)]
+    public float warmSpeed = 1f;
+    public GameObject player;
+
+    private float currCold;
+    private bool warming = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("TEST");
-        
+        currCold = coldbar.slider.value;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (byFire)
+        if (currCold > 0 && currCold <= 100) 
         {
-            StartCoroutine(LowerCold(waitTime));
-        }*/
-    }
+            coldbar.SetCold(currCold);
+        }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
     }
 
     private void OnTriggerStay(Collider other)
     {
+        warming = true;
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("enter");
+            currCold -= 1 * Time.deltaTime * warmSpeed;
         }
     }
 
-    /* private void OnCollisionStay(Collision collision)
-     {
-         if (collision.gameObject.CompareTag("Player"))
-         {
-             Debug.Log("Yes");
-         }
-     }*/
-
-
-
-    IEnumerator LowerCold(float waitTime)
+    private void OnTriggerExit(Collider other)
     {
-        yield return new WaitForSeconds(waitTime);
-        coldbar.SetCold(-1);
+        warming = false;
     }
+
 }
