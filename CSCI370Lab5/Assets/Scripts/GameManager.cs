@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     private int daySurvived = 0;
     public TextMeshProUGUI survivedText;
 
+    public GameObject healtBar;
+    public GameObject coldBar;
+
 
 
 
