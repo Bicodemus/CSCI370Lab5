@@ -1706,8 +1706,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "How to play:\nUse WASD to move and the Mouse to look around \nspace bar
-    to jump \nstay near the fire to stay warm \navoid the zombies "
+  m_text: "How to play:\nUse WASD to move and the Mouse to look around \nAvoid the
+    zombies and keep near the fire\nGood luck!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4b93ec2653c5b6d41ab425bbc577d654, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
