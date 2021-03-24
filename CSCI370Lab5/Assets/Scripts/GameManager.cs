@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI survivedText;
 
 
+
+
     private void Awake()
     {
         if (Instance == null)
