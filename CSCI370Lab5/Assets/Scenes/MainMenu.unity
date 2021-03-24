@@ -587,6 +587,7 @@ MonoBehaviour:
   survivedText: {fileID: 81479814}
   healtBar: {fileID: 1404136565}
   coldBar: {fileID: 840852595}
+  survived: {fileID: 81479812}
 --- !u!4 &366088041
 Transform:
   m_ObjectHideFlags: 0

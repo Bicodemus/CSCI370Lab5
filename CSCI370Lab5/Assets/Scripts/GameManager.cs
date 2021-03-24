@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject healtBar;
     public GameObject coldBar;
+    public GameObject survived;
 
 
 
@@ -133,6 +134,9 @@ public class GameManager : MonoBehaviour
     {
         disableStartUI();
         StartCoroutine(LoadYourAsyncScene(true, "Level"));
+        healtBar.SetActive(true);
+        coldBar.SetActive(true);
+        survived.SetActive(true);
 
 
     }
