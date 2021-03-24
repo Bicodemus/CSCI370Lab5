@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
 
     private bool warm;
 
+    private int daySurvived = 0;
+    public TextMeshProUGUI survivedText;
+
 
     private void Awake()
     {
@@ -73,6 +76,13 @@ public class GameManager : MonoBehaviour
         creditsButton.SetActive(true);
         howtoplayButton.SetActive(true);
         backgroundCanvas.SetActive(true);
+
+    }
+
+    public void SurvivedDay(int sd)
+    {
+        daySurvived += sd;
+        survivedText.text = "Days Survived: " + daySurvived;
 
     }
 
