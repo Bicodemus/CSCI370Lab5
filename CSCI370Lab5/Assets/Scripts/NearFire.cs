@@ -53,12 +53,12 @@ public class NearFire : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         warming = false;
-        player.setCold(coldbar.slider.value);
+        GameManager.Instance.setCold(coldbar.slider.value);
     }
 
-    public void setCold(float cold)
+    public void setCold()
     {
-        currCold = cold;
+        currCold = GameManager.Instance.currentCold;
     }
 
 }

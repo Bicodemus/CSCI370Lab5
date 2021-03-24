@@ -585,9 +585,20 @@ MonoBehaviour:
   canvas: {fileID: 874796200}
   events: {fileID: 2013068989}
   survivedText: {fileID: 81479814}
-  healtBar: {fileID: 1404136565}
-  coldBar: {fileID: 840852595}
+  HealthBar: {fileID: 1404136565}
+  ColdBar: {fileID: 840852595}
+  healthBar: {fileID: 1404136567}
+  coldBar: {fileID: 840852597}
   survived: {fileID: 81479812}
+  maxHealth: 100
+  currentHealth: 0
+  deathEffect: {fileID: 0}
+  coldImage: {fileID: 571463216}
+  minCold: 0
+  currentCold: 0
+  isCold: 0
+  coolSpeed: 1
+  fire: {fileID: 0}
 --- !u!4 &366088041
 Transform:
   m_ObjectHideFlags: 0

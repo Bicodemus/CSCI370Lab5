@@ -31,9 +31,23 @@ public class GameManager : MonoBehaviour
     private int daySurvived = 0;
     public TextMeshProUGUI survivedText;
 
-    public GameObject healtBar;
-    public GameObject coldBar;
+    public GameObject HealthBar;
+    public GameObject ColdBar;
+    public HealthBar healthBar;
+    public ColdBar coldBar;
     public GameObject survived;
+
+    //Player
+    public int maxHealth = 100;
+    public int currentHealth;
+    public GameObject deathEffect;
+    public GameObject coldImage;
+    public int minCold = 0;
+    public float currentCold;
+    public bool isCold;
+    public float coolSpeed = 1f;
+    public NearFire fire;
+
 
 
 
@@ -65,7 +79,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        isCold = GameManager.Instance.isWarm();
+
+
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    TakeDamage(10);
+        //}
+
+        if (isCold)
+        {
+
+            if (currentCold >= 0 && currentCold <= 100)
+            {
+                currentCold += 1 * Time.deltaTime * coolSpeed;
+                coldBar.SetCold(currentCold);
+            }
+        }
     }
     private void disableStartUI()
     {
@@ -134,9 +164,13 @@ public class GameManager : MonoBehaviour
     {
         disableStartUI();
         StartCoroutine(LoadYourAsyncScene(true, "Level"));
-        healtBar.SetActive(true);
-        coldBar.SetActive(true);
+        HealthBar.SetActive(true);
+        ColdBar.SetActive(true);
         survived.SetActive(true);
+        currentCold = coldBar.slider.value;
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        coldBar.SetMinCold(minCold);
 
 
     }
@@ -176,5 +210,69 @@ public class GameManager : MonoBehaviour
     {
         return warm;
     }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
 
+        healthBar.SetHealth(currentHealth);
+        coldBar.SetCold(currentCold);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        else if (currentCold == 100)
+        {
+            if (!isCold)
+            {
+                Cold();
+                isCold = true;
+            }
+            TakeDamage(10);
+        }
+        else
+        {
+            if (isCold)
+            {
+                NotCold();
+                isCold = false;
+            }
+        }
+    }
+
+    // Enables or disables a chilled border
+    IEnumerator ColdColorLerp(Color endValue, float duration)
+    {
+        float time = 0;
+        Image sprite = coldImage.GetComponent<Image>();
+        Color startValue = sprite.color;
+
+        while (time < duration)
+        {
+            sprite.color = Color.Lerp(startValue, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        sprite.color = endValue;
+    }
+    public void Cold()
+    {
+        StartCoroutine(ColdColorLerp(new Color(1, 1, 1, 1), 2));
+    }
+    public void NotCold()
+    {
+        StartCoroutine(ColdColorLerp(new Color(0, 0, 0, 0), 2));
+    }
+
+    void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+
+    }
+
+    public void setCold(float cold)
+    {
+        currentCold = cold;
+    }
 }
