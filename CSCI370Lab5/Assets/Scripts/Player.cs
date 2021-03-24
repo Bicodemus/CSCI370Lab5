@@ -13,16 +13,22 @@ public class Player : MonoBehaviour
     public GameObject coldImage;
 
     public int minCold = 0;
-    public int currentCold;
+    public float currentCold;
     public ColdBar coldBar;
-    public bool isCold = false;
+    public bool isCold;
+
+    public float warmSpeed = 2.5f;
+    private float change = 0f;
+
+
+    public GameManager manager;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentCold = coldBar.slider.value;
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
-        currentCold = minCold;
         coldBar.SetMinCold(minCold);
 
     }
@@ -30,9 +36,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isCold = !manager.isWarm();
+
+
         if (Input.GetKeyDown("space"))
         {
             TakeDamage(10);
+        }
+
+        if (isCold)
+        {
+
+            if (currentCold >= 0 && currentCold <= 100)
+            {
+                change += 1 * Time.deltaTime * warmSpeed;
+                coldBar.SetCold(currentCold + change);
+            }
+
         }
     }
 
@@ -46,7 +66,8 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-        }else if(currentCold == 100)
+        }
+        else if (currentCold == 100)
         {
             if (!isCold)
             {
@@ -54,15 +75,17 @@ public class Player : MonoBehaviour
                 isCold = true;
             }
             TakeDamage(10);
-        } else
-		{
-            if(isCold)
-			{
+        }
+        else
+        {
+            if (isCold)
+            {
                 NotCold();
                 isCold = false;
-			}
-		}
+            }
+        }
     }
+
     // Enables or disables a chilled border
     IEnumerator ColdColorLerp(Color endValue, float duration)
     {
@@ -93,4 +116,5 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
 
     }
+
 }

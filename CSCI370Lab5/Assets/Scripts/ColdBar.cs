@@ -23,4 +23,11 @@ public class ColdBar : MonoBehaviour
 
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
+
+    public void ChangeCold(float cold)
+    {
+        slider.value = slider.value + cold;
+
+        fill.color = gradient.Evaluate(slider.normalizedValue);
+    }
 }
