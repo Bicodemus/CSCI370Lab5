@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: ed75cfdc0bc153b4e958258fad5671eb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Ledare
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c7561fb519d8df349bafa69aaf840a5f, type: 3}
+  - {fileID: 12800000, guid: 3531fb10388ee3f43a5a1ebf6886e9f5, type: 3}
+  - {fileID: 12800000, guid: 39573ddf82293304f98f77bd533d1570, type: 3}
+  - {fileID: 12800000, guid: 042a625902038ec4e909102eee4d25f9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
