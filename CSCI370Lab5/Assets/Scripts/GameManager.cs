@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     //Player
     public int maxHealth = 100;
     public int currentHealth;
-    public GameObject deathEffect;
+    //public GameObject deathEffect;
     public GameObject coldImage;
     public int minCold = 100;
     public float currentCold;
@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour
     public bool cold = false;
     public float coolSpeed = 1f;
     public NearFire fire;
+
+    public GameObject endtext;
+    public GameObject endbackbutton;
 
 
 
@@ -212,6 +215,7 @@ public class GameManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            Debug.Log("dead");
         }
         else if (currentCold == 100)
         {
@@ -272,7 +276,18 @@ public class GameManager : MonoBehaviour
 
     void Die()
     {
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        StartCoroutine(LoadYourAsyncScene(true, "MainMenu"));
+        endtext.SetActive(true);
+        endbackbutton.SetActive(true);
+        //Destroy(gameObject);
+        
+   
+    }
+    public void endbackButton()
+    {
+        enableStartUI();
+        endtext.SetActive(false);
+        endbackbutton.SetActive(false);
     }
 }
