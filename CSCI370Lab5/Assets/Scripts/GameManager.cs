@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject canvas;
     public GameObject events;
 
-    public GameObject Player;
+    private bool warm;
 
 
     private void Awake()
@@ -146,6 +146,16 @@ public class GameManager : MonoBehaviour
         playBackButton.SetActive(false);
         enableStartUI();
 
+    }
+
+    public void byFire(bool fire)
+    {
+        warm = fire;
+    }
+
+    public bool isWarm()
+    {
+        return warm;
     }
 
 }
