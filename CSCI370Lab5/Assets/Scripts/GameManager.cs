@@ -284,10 +284,11 @@ public class GameManager : MonoBehaviour
         endtext.SetActive(true);
         endbackbutton.SetActive(true);
         endscreen.SetActive(true);
-        
         //Destroy(gameObject);
-        
-   
+        Cursor.lockState = CursorLockMode.None;
+
+
+
     }
     public void endbackButton()
     {
@@ -295,6 +296,7 @@ public class GameManager : MonoBehaviour
         endtext.SetActive(false);
         endbackbutton.SetActive(false);
         endscreen.SetActive(false);
+        Debug.Log("endscreen back button is pressed");
     }
 
 }
