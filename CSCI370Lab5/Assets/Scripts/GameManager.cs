@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
     public void SurvivedDay(int sd)
     {
         daySurvived += sd;
+        Debug.Log("a new day");
         survivedText.text = "Days Survived: " + daySurvived;
 
     }
