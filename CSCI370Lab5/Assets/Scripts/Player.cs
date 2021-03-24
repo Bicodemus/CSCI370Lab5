@@ -17,10 +17,9 @@ public class Player : MonoBehaviour
     public ColdBar coldBar;
     public bool isCold;
 
-    public float warmSpeed = 2.5f;
-    private float change = 0f;
+    public float coolSpeed = 1f;
 
-
+    public NearFire fire;
     public GameManager manager;
 
     // Start is called before the first frame update
@@ -49,8 +48,8 @@ public class Player : MonoBehaviour
 
             if (currentCold >= 0 && currentCold <= 100)
             {
-                change += 1 * Time.deltaTime * warmSpeed;
-                coldBar.SetCold(currentCold + change);
+                currentCold += 1 * Time.deltaTime * coolSpeed;
+                coldBar.SetCold(currentCold);
             }
 
         }
@@ -117,4 +116,16 @@ public class Player : MonoBehaviour
 
     }
 
+    public void setCold(float cold)
+    {
+        currentCold = cold;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fire"))
+        {
+            fire.setCold(currentCold);
+        }
+    }
 }
