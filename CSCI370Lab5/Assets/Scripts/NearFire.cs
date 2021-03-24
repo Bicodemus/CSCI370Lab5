@@ -5,14 +5,14 @@ using UnityEngine;
 public class NearFire : MonoBehaviour
 {
 
-    public ColdBar coldbar;
+    //public ColdBar coldbar;
     public float warmSpeed = 1f;
-    public Player player;
+    //public Player player;
 
     private float currCold;
     private bool warming = false;
     
-    public GameManager manager;
+    //public GameManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +25,10 @@ public class NearFire : MonoBehaviour
     {
         
 
-        manager.byFire(warming);
+        GameManager.Instance.byFire(warming);
         if (currCold >= 0 && currCold <= 100) 
         {
-            coldbar.SetCold(currCold);
+            GameManager.Instance.coldBar.SetCold(currCold);
         }
 
     }
@@ -37,14 +37,16 @@ public class NearFire : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            currCold = coldbar.slider.value;
+            currCold = GameManager.Instance.coldBar.slider.value;
+            GameManager.Instance.dialog.SetActive(true);
+            Debug.Log("you are near the fire");
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
         warming = true;
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             currCold -= 1 * Time.deltaTime * warmSpeed;
         }
@@ -53,7 +55,8 @@ public class NearFire : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         warming = false;
-        GameManager.Instance.setCold(coldbar.slider.value);
+        GameManager.Instance.coldBar.SetCold(currCold);
+        GameManager.Instance.dialog.SetActive(false);
     }
 
     public void setCold()

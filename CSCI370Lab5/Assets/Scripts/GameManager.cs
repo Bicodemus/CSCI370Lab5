@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject endtext;
     public GameObject endbackbutton;
+    public GameObject endscreen;
+
+    public GameObject dialog;
 
 
 
@@ -277,9 +280,11 @@ public class GameManager : MonoBehaviour
     void Die()
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        StartCoroutine(LoadYourAsyncScene(true, "MainMenu"));
+        StartCoroutine(LoadYourAsyncScene(true, "end"));
         endtext.SetActive(true);
         endbackbutton.SetActive(true);
+        endscreen.SetActive(true);
+        
         //Destroy(gameObject);
         
    
@@ -289,5 +294,7 @@ public class GameManager : MonoBehaviour
         enableStartUI();
         endtext.SetActive(false);
         endbackbutton.SetActive(false);
+        endscreen.SetActive(false);
     }
+
 }
