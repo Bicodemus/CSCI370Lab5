@@ -38,10 +38,10 @@ public class Player : MonoBehaviour
         isCold = !manager.isWarm();
 
 
-        if (Input.GetKeyDown("space"))
-        {
-            TakeDamage(10);
-        }
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    TakeDamage(10);
+        //}
 
         if (isCold)
         {
@@ -54,14 +54,24 @@ public class Player : MonoBehaviour
 
         }
     }
-    public void OnCollisionEnter(Collision collision)
+    //public void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("zombie"))
+    //    {
+    //        TakeDamage(1);
+    //        Debug.Log("munch");
+    //    }
+    //}
+
+    public void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (collision.gameObject.CompareTag("zombie"))
+        if (hit.gameObject.CompareTag("zombie"))
         {
             TakeDamage(1);
             Debug.Log("munch");
         }
     }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
