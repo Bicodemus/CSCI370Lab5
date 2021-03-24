@@ -55,7 +55,14 @@ public class Player : MonoBehaviour
 
         }
     }
-
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("zombie"))
+        {
+            TakeDamage(1);
+            Debug.Log("munch");
+        }
+    }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
