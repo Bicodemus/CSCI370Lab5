@@ -42,9 +42,10 @@ public class GameManager : MonoBehaviour
     public int currentHealth;
     public GameObject deathEffect;
     public GameObject coldImage;
-    public int minCold = 0;
+    public int minCold = 100;
     public float currentCold;
-    public bool isCold;
+    public bool isCold = false;
+    public bool cold = false;
     public float coolSpeed = 1f;
     public NearFire fire;
 
@@ -79,21 +80,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isCold = GameManager.Instance.isWarm();
+        //cold = !isWarm();
 
 
         //if (Input.GetKeyDown("space"))
         //{
-        //    TakeDamage(10);
+        //    setCold(10);
         //}
 
-        if (isCold)
+        if (cold)
         {
 
             if (currentCold >= 0 && currentCold <= 100)
             {
                 currentCold += 1 * Time.deltaTime * coolSpeed;
-                coldBar.SetCold(currentCold);
+                setCold(currentCold);
             }
         }
     }
@@ -167,7 +168,7 @@ public class GameManager : MonoBehaviour
         HealthBar.SetActive(true);
         ColdBar.SetActive(true);
         survived.SetActive(true);
-        currentCold = coldBar.slider.value;
+        currentCold = 0;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         coldBar.SetMinCold(minCold);
@@ -201,21 +202,12 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void byFire(bool fire)
-    {
-        warm = fire;
-    }
-
-    public bool isWarm()
-    {
-        return warm;
-    }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
-        coldBar.SetCold(currentCold);
+        setCold(currentCold);
 
         if (currentHealth <= 0)
         {
@@ -255,6 +247,15 @@ public class GameManager : MonoBehaviour
         }
         sprite.color = endValue;
     }
+    public void byFire(bool fire)
+    {
+        warm = fire;
+    }
+
+    public bool isWarm()
+    {
+        return warm;
+    }
     public void Cold()
     {
         StartCoroutine(ColdColorLerp(new Color(1, 1, 1, 1), 2));
@@ -263,16 +264,15 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(ColdColorLerp(new Color(0, 0, 0, 0), 2));
     }
+    public void setCold(float cold)
+    {
+        currentCold = cold;
+        coldBar.SetCold(currentCold);
+    }
 
     void Die()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
-
-    }
-
-    public void setCold(float cold)
-    {
-        currentCold = cold;
     }
 }
