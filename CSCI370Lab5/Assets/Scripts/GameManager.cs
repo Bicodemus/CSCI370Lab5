@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,9 +29,6 @@ public class GameManager : MonoBehaviour
 
     private bool warm;
 
-    private int daySurvived = 0;
-    public TextMeshProUGUI survivedText;
-
     public GameObject HealthBar;
     public GameObject ColdBar;
     public HealthBar healthBar;
@@ -54,6 +52,13 @@ public class GameManager : MonoBehaviour
     public GameObject endscreen;
 
     public GameObject dialog;
+
+    //[SerializeField, Range(0, 24)] private float TimeOfDay;
+
+    public TextMeshProUGUI timeCounter;
+    private TimeSpan timePlaying;
+    private bool timerGoing;
+    private float elapsedTime;
 
 
 
@@ -80,7 +85,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
         currentCold = 50f;
+=======
+        timeCounter.text = "Time: 00:00";
+        timerGoing = false;
+        BeginTimer();
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -102,7 +113,12 @@ public class GameManager : MonoBehaviour
                 currentCold += 1 * Time.deltaTime * coolSpeed;
                 setCold(currentCold);
             }
+<<<<<<< Updated upstream
         }*/
+=======
+        }
+
+>>>>>>> Stashed changes
     }
     private void disableStartUI()
     {
@@ -122,13 +138,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void SurvivedDay(int sd)
-    {
-        daySurvived += sd;
-        Debug.Log("a new day");
-        survivedText.text = "Days Survived: " + daySurvived;
-
-    }
 
     IEnumerator ColorLerp(Color endValue, float duration)
     {
@@ -299,4 +308,29 @@ public class GameManager : MonoBehaviour
         Debug.Log("endscreen back button is pressed");
     }
 
+    public void BeginTimer()
+    {
+        timerGoing = true;
+        elapsedTime = 0f;
+
+        StartCoroutine(UpdateTimer());
+    }
+
+    public void EndTimer()
+    {
+        timerGoing = false;
+    }
+
+    private IEnumerator UpdateTimer()
+    {
+        while (timerGoing)
+        {
+            elapsedTime += Time.deltaTime;
+            timePlaying = TimeSpan.FromSeconds(elapsedTime);
+            string timePlayingStr = "Time: " + timePlaying.ToString("mm' : 'ss");
+            timeCounter.text = timePlayingStr;
+
+            yield return null;
+        }
+    }
 }

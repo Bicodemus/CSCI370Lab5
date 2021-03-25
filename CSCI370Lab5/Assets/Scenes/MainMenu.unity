@@ -343,8 +343,9 @@ GameObject:
   - component: {fileID: 81479813}
   - component: {fileID: 81479815}
   - component: {fileID: 81479814}
+  - component: {fileID: 81479816}
   m_Layer: 5
-  m_Name: survivedText
+  m_Name: timeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,7 +392,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Days Survived: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: deebd24f3557bb547a0b678e78d079b8, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -455,7 +456,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &81479815
@@ -466,6 +467,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81479812}
   m_CullTransparentMesh: 1
+--- !u!114 &81479816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81479812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &257771515
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +734,6 @@ MonoBehaviour:
   backgroundImageC: {fileID: 1604941454}
   canvas: {fileID: 874796200}
   events: {fileID: 2013068989}
-  survivedText: {fileID: 81479814}
   HealthBar: {fileID: 1404136565}
   ColdBar: {fileID: 840852595}
   healthBar: {fileID: 1404136567}
@@ -737,6 +752,7 @@ MonoBehaviour:
   endbackbutton: {fileID: 1046090416}
   endscreen: {fileID: 1494293279}
   dialog: {fileID: 78899900}
+  timeCounter: {fileID: 81479814}
 --- !u!4 &366088041
 Transform:
   m_ObjectHideFlags: 0

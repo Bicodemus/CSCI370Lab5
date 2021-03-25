@@ -12,7 +12,7 @@ public class LightingManager : MonoBehaviour
     //Variables
     [SerializeField, Range(0, 24)] private float TimeOfDay;
 
-    public int daySurvived;
+    
 
 
     private void Update()
@@ -30,11 +30,6 @@ public class LightingManager : MonoBehaviour
         else
         {
             UpdateLighting(TimeOfDay / 24f);
-        }
-
-        if (TimeOfDay == 1)
-        {
-            GameManager.Instance.SurvivedDay(1);
         }
     }
 
