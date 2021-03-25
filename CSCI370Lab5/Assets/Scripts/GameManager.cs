@@ -85,13 +85,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< Updated upstream
+
         currentCold = 50f;
-=======
+
         timeCounter.text = "Time: 00:00";
         timerGoing = false;
         BeginTimer();
->>>>>>> Stashed changes
+
     }
 
     // Update is called once per frame
@@ -113,13 +113,12 @@ public class GameManager : MonoBehaviour
                 currentCold += 1 * Time.deltaTime * coolSpeed;
                 setCold(currentCold);
             }
-<<<<<<< Updated upstream
-        }*/
-=======
-        }
 
->>>>>>> Stashed changes
+        }*/
     }
+        
+
+
     private void disableStartUI()
     {
         titleText.gameObject.SetActive(false);
