@@ -97,24 +97,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //cold = !isWarm();
-
-
-        //if (Input.GetKeyDown("space"))
-        //{
-        //    setCold(10);
-        //}
-
-        /*if (cold)
-        {
-
-            if (currentCold >= 0 && currentCold <= 100)
-            {
-                currentCold += 1 * Time.deltaTime * coolSpeed;
-                setCold(currentCold);
-            }
-
-        }*/
+        
     }
         
 
@@ -183,10 +166,10 @@ public class GameManager : MonoBehaviour
         HealthBar.SetActive(true);
         ColdBar.SetActive(true);
         survived.SetActive(true);
-        currentCold = 50;
+        setCold(100);
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        coldBar.SetMinCold(minCold);
+        coldBar.SetMinCold(100);
 
 
     }

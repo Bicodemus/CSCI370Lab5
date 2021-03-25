@@ -700,7 +700,6 @@ GameObject:
   m_Component:
   - component: {fileID: 808310280}
   - component: {fileID: 808310279}
-  - component: {fileID: 808310278}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Fire
@@ -708,21 +707,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &808310278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808310277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 123bed361a73e7f4ebbeffc87ef8aa52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coldbar: {fileID: 258800953}
-  warmSpeed: 2.5
-  player: {fileID: 0}
 --- !u!135 &808310279
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -973,9 +957,27 @@ MonoBehaviour:
   backgroundCanvas: {fileID: 0}
   backgroundImage: {fileID: 0}
   backgroundImageC: {fileID: 0}
-  canvas: {fileID: 0}
+  canvas: {fileID: 431964103}
   events: {fileID: 0}
-  Player: {fileID: 0}
+  survivedText: {fileID: 0}
+  HealthBar: {fileID: 0}
+  ColdBar: {fileID: 258800951}
+  healthBar: {fileID: 1989904293}
+  coldBar: {fileID: 258800953}
+  survived: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  coldImage: {fileID: 0}
+  minCold: 100
+  currentCold: 0
+  isCold: 0
+  cold: 0
+  coolSpeed: 1
+  fire: {fileID: 0}
+  endtext: {fileID: 0}
+  endbackbutton: {fileID: 0}
+  endscreen: {fileID: 0}
+  dialog: {fileID: 0}
 --- !u!1 &1707700265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,15 +1714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1762efed2320d5f4d909f2335d549fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthbar: {fileID: 0}
-  deathEffect: {fileID: 0}
-  coldImage: {fileID: 0}
-  minCold: 0
-  currentCold: 0
-  coldBar: {fileID: 2017724470}
-  isCold: 0
+  warmSpeed: 1
+  coolSpeed: 1
 --- !u!1 &2135731322
 GameObject:
   m_ObjectHideFlags: 0
