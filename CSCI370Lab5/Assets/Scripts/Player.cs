@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
 
     private bool nearFire;
-    private float tempChange;
+    private float tempChange = 100;
     public float warmSpeed = 1f;
     public float coolSpeed = 1f;
 
@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
         {
             tempChange += (1f * Time.deltaTime) * coolSpeed;
         }
-        if (tempChange < 0)
+        if (tempChange < 10)
         {
-            tempChange = 0;
+            tempChange = 10;
         }
         if (tempChange > 100)
         {

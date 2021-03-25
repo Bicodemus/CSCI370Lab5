@@ -3542,8 +3542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1762efed2320d5f4d909f2335d549fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warmSpeed: 1
-  coolSpeed: 1
+  warmSpeed: 8
+  coolSpeed: 5
 --- !u!82 &455170323
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12986,7 +12986,6 @@ MonoBehaviour:
   DirectionalLight: {fileID: 2138677392}
   Preset: {fileID: 11400000, guid: 5da94ab583669914a99ce5aca03a20b4, type: 2}
   TimeOfDay: 10.7
-  daySurvived: 0
 --- !u!4 &1762609193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1375076462620113347, guid: 07abb8e7d6df54f4884cecf7ba0c84e8, type: 3}
