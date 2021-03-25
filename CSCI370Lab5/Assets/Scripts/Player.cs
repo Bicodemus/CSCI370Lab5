@@ -7,13 +7,36 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
+    private bool nearFire;
+    private float tempChange;
+    public float warmSpeed = 1f;
+    public float coolSpeed = 1f;
+
+
     // Start is called before the first frame update
     void Start()
     {
+
     }
     // Update is called once per frame
     void Update()
     {
+        if (nearFire)
+        {
+            tempChange -= (1f * Time.deltaTime) * warmSpeed ;
+        } else
+        {
+            tempChange += (1f * Time.deltaTime) * coolSpeed;
+        }
+        if (tempChange < 0)
+        {
+            tempChange = 0;
+        }
+        if (tempChange > 100)
+        {
+            tempChange = 100;
+        }
+        GameManager.Instance.setCold(tempChange);
     }
     //public void OnCollisionEnter(Collision collision)
     //{
@@ -37,7 +60,17 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Fire"))
         {
-            GameManager.Instance.fire.setCold();
+            nearFire = true;
+            /*GameManager.Instance.fire.setCold();*/
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fire"))
+        {
+            nearFire = false;
+            /*GameManager.Instance.fire.setCold();*/
         }
     }
 }

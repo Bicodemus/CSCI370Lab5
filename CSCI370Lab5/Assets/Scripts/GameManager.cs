@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentCold = 50f;
     }
 
     // Update is called once per frame
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         //    setCold(10);
         //}
 
-        if (cold)
+        /*if (cold)
         {
 
             if (currentCold >= 0 && currentCold <= 100)
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
                 currentCold += 1 * Time.deltaTime * coolSpeed;
                 setCold(currentCold);
             }
-        }
+        }*/
     }
     private void disableStartUI()
     {
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
         HealthBar.SetActive(true);
         ColdBar.SetActive(true);
         survived.SetActive(true);
-        currentCold = 0;
+        currentCold = 50;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         coldBar.SetMinCold(minCold);
@@ -214,7 +214,6 @@ public class GameManager : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
-        setCold(currentCold);
 
         if (currentHealth <= 0)
         {
